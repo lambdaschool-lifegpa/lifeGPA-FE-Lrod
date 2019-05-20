@@ -1,6 +1,7 @@
 import React from "react";
 
 import Loader from "react-loader-spinner";
+import axios from "axios";
 
 class Login extends React.Component {
     constructor(){
@@ -22,14 +23,22 @@ class Login extends React.Component {
         });
     };
 
-   
+    login = e => {
+        const creds = this.state.credentials;
+        e.preventDefault();
+        console.log(creds);
+        axios
+        .post("https://localhost:4444/api/login", creds)
+        .then(res=> console.log(res))
+        .catch(err=> console.log(err))
+    }
 
     render(){
         if (this.props.loggingIn) {
             return (<span>...loading</span>)
         }
         return (<div>
-            <form onSubmit={this.logIn}>
+            <form>
                 <input 
                 type="text"
                 name="username"
@@ -45,8 +54,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
                 />
             </form>
-            <button onClick={this.logIn}>{this.props.loggingIn ? 
-                (<Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) : ('Log In')}</button>
+           <button onClick={this.login}> Login </button>
             </div>)
     }
 

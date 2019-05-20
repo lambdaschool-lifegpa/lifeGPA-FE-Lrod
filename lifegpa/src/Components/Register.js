@@ -26,16 +26,16 @@ class Register extends React.Component {
         const creds = this.state.credentials;
         console.log(creds);
         e.preventDefault();
-        axios 
-            .post("https://newlifegpa.herokuapp.com/api/register", creds)
-            .then(res => this.setState({ 
-                credentials: {
-                username: '',
-                fullName: '',
-                password: '',
-                email: '',
-            }}))
-            .catch()
+        // axios 
+        //     .post("https://localhost:4444/api/register", creds)
+        //     .then(res => this.setState({ credentials: {
+        //         username: '',
+        //         fullName: '',
+        //         password: '',
+        //         email: '',
+        //     }}))
+        //     .catch(err => console.log(err))
+        // hard code token for testing 
     };
 
     render(){
