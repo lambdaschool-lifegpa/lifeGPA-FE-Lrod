@@ -8,7 +8,7 @@ class Register extends React.Component {
         this.state = {
             credentials: {
                 username: '',
-                fullname: '',
+                fullName: '',
                 password: '',
                 email: '',
             }
@@ -24,14 +24,17 @@ class Register extends React.Component {
     };
     logIn = e => {
         const creds = this.state.credentials;
+        console.log(creds);
         e.preventDefault();
         axios 
-            .post("https://newlifegpa.herokuapp.com/api/register", {creds})
-            .then(res => {
-                this.setState({
-                    
-                })
-            })
+            .post("https://newlifegpa.herokuapp.com/api/register", creds)
+            .then(res => this.setState({ 
+                credentials: {
+                username: '',
+                fullName: '',
+                password: '',
+                email: '',
+            }}))
             .catch()
     };
 
@@ -43,16 +46,16 @@ class Register extends React.Component {
             <form>
                 <input 
                 type="text"
-                name="username"
-                value={this.state.credentials.username}
-                placeholder="username"
+                name="fullName"
+                value={this.state.credentials.fullName}
+                placeholder="fullName"
                 onChange={this.handleChange}
                 />
                 <input 
                 type="text"
-                name="fullname"
-                value={this.state.credentials.fullname}
-                placeholder="fullname"
+                name="username"
+                value={this.state.credentials.username}
+                placeholder="username"
                 onChange={this.handleChange}
                 />
                 <input
@@ -71,7 +74,7 @@ class Register extends React.Component {
                 />
             </form>
             <button onClick={this.logIn}>{this.props.loggingIn ? 
-                (<Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) : ('Log In')}</button>
+                (<Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) : ('Register')}</button>
             </div>)
     }
 }
