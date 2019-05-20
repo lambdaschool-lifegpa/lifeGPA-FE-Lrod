@@ -6,6 +6,7 @@ import Landing from './Components/Landing';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Dashboard from './Components/Dashboard';
+import withAuthenticate from "./Components/withAuthenticate";
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar/>
+        {/* <ComponentFromAuthenticate /> */}
         <Route exact path="/" component={Landing} />
         <div className="container">
           <Route exact path='/login' component={Login} />
@@ -24,5 +26,6 @@ function App() {
     </Router>
   );
 }
+// const ComponentFromAuthenticate = withAuthenticate(Dashboard)(Login);
 
 export default App;

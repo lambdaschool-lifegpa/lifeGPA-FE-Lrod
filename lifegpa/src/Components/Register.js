@@ -1,14 +1,19 @@
 import React from "react";
-
+import axios from 'axios';
 import Loader from "react-loader-spinner";
 
 class Register extends React.Component {
-    state = {
-        credentials: {
-            username: '',
-            password: ''
-        }
-    };
+    constructor(){
+        super();
+        this.state = {
+            credentials: {
+                username: '',
+                fullname: '',
+                password: '',
+                email: '',
+            }
+        };
+    }
     handleChange = e => {
         this.setState({
             credentials: {
@@ -18,11 +23,16 @@ class Register extends React.Component {
         });
     };
     logIn = e => {
+        const creds = this.state.credentials;
         e.preventDefault();
-        this.props.logIn(this.state.credentials)
-            .then((res) =>{
-                if (res) this.props.history.push('/protected')
-            });
+        axios 
+            .post("https://newlifegpa.herokuapp.com/api/register", {creds})
+            .then(res => {
+                this.setState({
+                    
+                })
+            })
+            .catch()
     };
 
     render(){
@@ -30,7 +40,7 @@ class Register extends React.Component {
             return (<span>...loading</span>)
         }
         return (<div>
-            <form onSubmit={this.logIn}>
+            <form>
                 <input 
                 type="text"
                 name="username"
@@ -38,11 +48,25 @@ class Register extends React.Component {
                 placeholder="username"
                 onChange={this.handleChange}
                 />
+                <input 
+                type="text"
+                name="fullname"
+                value={this.state.credentials.fullname}
+                placeholder="fullname"
+                onChange={this.handleChange}
+                />
                 <input
                 type="password"
                 name="password"
                 value={this.state.credentials.password}
                 placeholder="password"
+                onChange={this.handleChange}
+                />
+                <input
+                type="text"
+                name="email"
+                value={this.state.credentials.email}
+                placeholder="email"
                 onChange={this.handleChange}
                 />
             </form>
