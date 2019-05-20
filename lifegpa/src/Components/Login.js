@@ -28,8 +28,8 @@ class Login extends React.Component {
         e.preventDefault();
         console.log(creds);
         axios
-        .post("https://localhost:4444/api/login", creds)
-        .then(res=> console.log(res))
+        .post("https://newlifegpa.herokuapp.com/api/login", creds)
+        .then(res=> localStorage.setItem("token", res.data.token))
         .catch(err=> console.log(err))
     }
 
