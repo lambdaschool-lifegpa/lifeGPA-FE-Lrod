@@ -4,7 +4,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 class NavBar extends React.Component {
     logOut(e) {
         e.preventDefault()
-        localStorage.removeItem("usertoken")
+        localStorage.removeItem("token")
         this.props.history.push('/')
     }
 
