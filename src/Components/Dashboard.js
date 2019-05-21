@@ -3,17 +3,25 @@ import axios from 'axios';
 import HabitList from './HabitList';
 
 class Dashboard extends React.Component {
-    // componentDidMount(){
-    //     axios
-    //         .get("https://newlifegpa.herokuapp.com/api/users/${id}")
-    //         .then(res => console.log(res))
-    //         .catch(err => console.log(err))
-    // }
+    constructor(){
+        super();
+            this.state = {
+                habits: [],
+                catergory: []
+            }
+    }
+    componentDidMount(){
+       const userToken = {headers: {Authorization: localStorage.getItem('token')}}
+        axios
+            .get("https://newlifegpa.herokuapp.com/api/users/habits/1", userToken)
+            .then(res => this.setState({habits: res.data[0].habits}))
+            .catch(err => console.log(err))
+    }
     render() {
         return (
         <div>
             <h1>Dashboard</h1>
-            {/* <HabitList /> */}
+            <HabitList habits={this.state.habits}/>
         </div>
         )
     }

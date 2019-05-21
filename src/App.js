@@ -6,7 +6,7 @@ import Landing from './Components/Landing';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Dashboard from './Components/Dashboard';
-import withAuthenticate from './Components/withAuthenticate';
+
 
 import './App.css';
 
