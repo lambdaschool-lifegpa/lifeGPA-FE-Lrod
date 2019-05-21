@@ -48,7 +48,7 @@ class NavBar extends React.Component {
                         </NavLink>
                     </li>
                 </ul>
-                {/* line of code that conditionally renders either userLink or loginLink if there is a usertoken */}
+                {localStorage.token ? userLink : loginLink}
             </div>
         )
     }
