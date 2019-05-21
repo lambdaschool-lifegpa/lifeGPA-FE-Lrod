@@ -4,8 +4,8 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 
 class Login extends React.Component {
-    constructor(){
-        super();    
+    constructor(props){
+        super(props);    
         this.state = {
             credentials: {
                 username: '',
@@ -29,7 +29,10 @@ class Login extends React.Component {
         console.log(creds);
         axios
         .post("https://newlifegpa.herokuapp.com/api/login", creds)
-        .then(res=> localStorage.setItem("token", res.data.token))
+        .then(res=> {
+            localStorage.setItem("token", res.data.token)
+            props.history.push("/dashboard")
+        })
         .catch(err=> console.log(err))
     }
 

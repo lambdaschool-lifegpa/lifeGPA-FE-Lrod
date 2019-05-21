@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import HabitList from './HabitList';
 
 class Dashboard extends React.Component {
-    constructor() {
-        super()
-       
+    constructor(props) {
+        super(props)
+        this.state = {
+            
+        }
     }
     componentDidMount(){
         axios
@@ -15,6 +18,7 @@ class Dashboard extends React.Component {
     render() {
         return (<div>
             <h1>Dashboard</h1>
+            <HabitList />
         </div>)
     }
 }
