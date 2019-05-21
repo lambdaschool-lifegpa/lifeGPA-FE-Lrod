@@ -11,7 +11,7 @@ class HabitList extends React.Component {
         }
     }
     render(){
-        return (<div>{this.state.habits} </div>)
+        return (<div>{this.state.habits.habit} </div>)
     }
 }
 export default HabitList;
