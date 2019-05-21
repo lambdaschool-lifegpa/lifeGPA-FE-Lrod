@@ -3,23 +3,19 @@ import axios from 'axios';
 import HabitList from './HabitList';
 
 class Dashboard extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            
-        }
-    }
-    componentDidMount(){
-        axios
-            .get("https://newlifegpa.herokuapp.com/api/users/${id")
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
+    // componentDidMount(){
+    //     axios
+    //         .get("https://newlifegpa.herokuapp.com/api/users/${id}")
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err))
+    // }
     render() {
-        return (<div>
+        return (
+        <div>
             <h1>Dashboard</h1>
-            <HabitList />
-        </div>)
+            {/* <HabitList /> */}
+        </div>
+        )
     }
 }
 

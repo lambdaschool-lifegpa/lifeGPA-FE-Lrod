@@ -6,21 +6,21 @@ import Landing from './Components/Landing';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Dashboard from './Components/Dashboard';
-import withAuthenticate from "./Components/withAuthenticate";
+import withAuthenticate from './Components/withAuthenticate';
 
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <NavBar/>
         {/* <ComponentFromAuthenticate /> */}
-        <Route exact path="/" component={Landing} />
-        <div className="container">
+        <Route exact path='/' component={Landing} />
+        <div className='container'>
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
-          <Route exact path='/dashboard' component={Dashboard} />
+          <Route exact path='/dashboard' render={props => <Dashboard {...props} />}  />
         </div>
       </div>
     </Router>

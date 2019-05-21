@@ -1,12 +1,13 @@
 import React from "react";
-
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props){
         super(props);    
         this.state = {
+            isLoggedIn: false,
             credentials: {
                 username: '',
                 password: ''
@@ -31,14 +32,15 @@ class Login extends React.Component {
         .post("https://newlifegpa.herokuapp.com/api/login", creds)
         .then(res=> {
             localStorage.setItem("token", res.data.token)
-            props.history.push("/dashboard")
+            this.setState({ isLoggedIn: true })
+            // this.props.history.push("/dashboard")
         })
         .catch(err=> console.log(err))
     }
 
     render(){
-        if (this.props.loggingIn) {
-            return (<span>...loading</span>)
+        if (this.state.isLoggedIn) {
+            return (<Redirect to='/dashboard' /> )
         }
         return (<div>
             <form>
